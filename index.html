@@ -24,7 +24,7 @@
         body {
             background-color: var(--darker-bg);
             color: var(--text-primary);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Courier New', monospace;
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -32,127 +32,87 @@
         /* HEADER */
         header {
             background: linear-gradient(135deg, rgba(0, 230, 118, 0.1) 0%, rgba(255, 23, 68, 0.05) 100%);
-            border-bottom: 2px solid var(--accent-green);
-            padding: 30px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            border-bottom: 3px solid var(--accent-red);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 230, 118, 0.03) 0px,
-                transparent 1px,
-                transparent 2px,
-                rgba(0, 230, 118, 0.03) 3px
-            );
-            pointer-events: none;
-            animation: flicker 0.15s infinite;
-        }
-
-        @keyframes flicker {
-            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-                opacity: 1;
-            }
-            20%, 24%, 55% {
-                opacity: 0.95;
-            }
-        }
-
-        h1 {
-            font-size: 2.5em;
+        .logo {
+            font-size: 2em;
             color: var(--accent-green);
-            text-shadow: 0 0 20px rgba(0, 230, 118, 0.5);
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
-            letter-spacing: 2px;
-        }
-
-        .subtitle {
-            color: var(--accent-red);
-            font-size: 0.9em;
-            letter-spacing: 1px;
-            position: relative;
-            z-index: 1;
+            font-weight: bold;
+            letter-spacing: 3px;
         }
 
         /* NAVIGATION */
         nav {
-            background-color: var(--dark-bg);
-            padding: 15px;
-            border-bottom: 1px solid var(--accent-green);
             display: flex;
-            justify-content: center;
             gap: 30px;
-            flex-wrap: wrap;
+            align-items: center;
         }
 
         nav a {
-            color: var(--accent-green);
+            color: var(--text-primary);
             text-decoration: none;
             cursor: pointer;
-            padding: 8px 15px;
-            border: 1px solid transparent;
-            transition: all 0.3s ease;
-            font-size: 0.9em;
+            font-size: 0.85em;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
         }
 
         nav a:hover {
-            border: 1px solid var(--accent-green);
-            background-color: rgba(0, 230, 118, 0.1);
-            box-shadow: 0 0 10px rgba(0, 230, 118, 0.3);
+            color: var(--accent-green);
+            text-shadow: 0 0 10px rgba(0, 230, 118, 0.5);
+        }
+
+        .login-btn {
+            color: var(--accent-red);
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            color: var(--accent-green);
         }
 
         /* MAIN CONTAINER */
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 30px;
+            display: flex;
+            min-height: calc(100vh - 80px);
         }
 
         .main-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .sidebar {
+            width: 350px;
+            background-color: var(--card-bg);
+            border-left: 1px solid var(--accent-green);
+            padding: 30px;
+            overflow-y: auto;
         }
 
         /* CONTENT BOXES */
         .content-box {
-            background-color: var(--card-bg);
-            border: 1px solid var(--accent-green);
-            padding: 25px;
-            border-radius: 2px;
-            position: relative;
-            overflow: hidden;
+            background-color: transparent;
+            border: 2px solid var(--accent-green);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 0;
         }
 
-        .content-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(0, 230, 118, 0.1),
-                transparent
-            );
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
+        .content-box h1 {
+            color: var(--accent-green);
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 230, 118, 0.3);
         }
 
         .content-box h2 {
@@ -167,7 +127,6 @@
             color: var(--accent-green);
             margin-top: 20px;
             margin-bottom: 15px;
-            font-size: 1.1em;
         }
 
         .content-box p {
@@ -176,150 +135,152 @@
             line-height: 1.8;
         }
 
-        /* CLICKABLE ELEMENTS */
-        .clickable-word,
-        .clickable-name {
-            color: var(--accent-green);
-            cursor: pointer;
-            padding: 2px 6px;
-            border-radius: 2px;
-            transition: all 0.2s ease;
-            font-weight: 600;
-        }
-
-        .clickable-word:hover,
-        .clickable-name:hover {
-            background-color: rgba(0, 230, 118, 0.2);
-            text-shadow: 0 0 10px rgba(0, 230, 118, 0.8);
-            box-shadow: 0 0 5px rgba(0, 230, 118, 0.4);
-        }
-
-        /* BINARY CODE */
-        .binary-code {
+        /* MESSAGE BOX */
+        .message-box {
             background-color: rgba(0, 230, 118, 0.05);
             border: 2px solid var(--accent-green);
-            padding: 15px;
-            margin: 20px 0;
-            font-family: 'Courier New', monospace;
-            font-size: 11px;
-            color: var(--accent-green);
-            line-height: 1.4;
-            word-break: break-all;
-            border-radius: 2px;
-            text-shadow: 0 0 5px rgba(0, 230, 118, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
+            padding: 30px;
+            margin: 30px 0;
+            min-height: 300px;
+            max-height: 500px;
+            overflow-y: auto;
+            position: relative;
         }
 
-        .binary-code:hover {
-            background-color: rgba(0, 230, 118, 0.1);
-            text-shadow: 0 0 10px rgba(0, 230, 118, 0.6);
+        .message-box.locked {
+            filter: blur(2px);
+            opacity: 0.6;
         }
 
-        /* HIDDEN DIALOGUE */
-        .hidden-dialogue {
-            display: none;
-            background-color: rgba(0, 230, 118, 0.05);
-            border-left: 4px solid var(--accent-green);
-            padding: 20px;
-            margin-top: 15px;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .hidden-dialogue.revealed {
-            display: block;
-        }
-
-        .dialogue-line {
-            margin-bottom: 12px;
-            font-size: 13px;
-            line-height: 1.8;
-        }
-
-        .dialogue-speaker {
-            color: var(--accent-green);
+        .message-header {
             font-weight: bold;
-            margin-bottom: 5px;
+            color: var(--accent-green);
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            text-transform: uppercase;
         }
 
-        .dialogue-text {
+        .message-content {
             color: var(--text-primary);
-            margin-left: 20px;
+            line-height: 1.9;
+            font-size: 0.95em;
         }
 
-        /* SEQUENCE TRACKER */
-        .sequence-tracker {
-            margin-top: 20px;
-            padding: 15px;
-            border: 1px dashed var(--accent-green);
-            background-color: rgba(0, 230, 118, 0.02);
-            border-radius: 2px;
+        /* PASSWORD SYSTEM */
+        .password-prompt {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--darker-bg);
+            border: 2px solid var(--accent-red);
+            padding: 30px;
+            text-align: center;
+            z-index: 10;
+            width: 80%;
+            max-width: 400px;
         }
 
-        .sequence-tracker p {
-            font-size: 12px;
+        .password-prompt h3 {
+            color: var(--accent-red);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .password-prompt input {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            background-color: var(--card-bg);
+            border: 1px solid var(--accent-green);
             color: var(--accent-green);
-            margin-bottom: 10px;
-        }
-
-        #sequenceDisplay {
-            color: var(--accent-green);
-            font-weight: bold;
             font-family: 'Courier New', monospace;
-        }
-
-        .hint-button {
-            margin-top: 10px;
-            padding: 10px 15px;
-            background-color: var(--accent-green);
-            color: var(--darker-bg);
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-            border-radius: 2px;
-            transition: all 0.3s ease;
             font-size: 0.9em;
         }
 
-        .hint-button:hover {
+        .password-prompt input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .password-prompt button {
+            background-color: var(--accent-green);
+            color: var(--darker-bg);
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .password-prompt button:hover {
             background-color: #00c853;
             box-shadow: 0 0 15px rgba(0, 230, 118, 0.6);
         }
 
-        .hint-display {
+        /* SIDEBAR STYLING */
+        .sidebar h3 {
+            color: var(--accent-red);
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            border-bottom: 1px dashed var(--accent-red);
+            padding-bottom: 10px;
+        }
+
+        .query-list {
+            list-style: none;
+        }
+
+        .query-list li {
+            margin-bottom: 15px;
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid rgba(0, 230, 118, 0.3);
+            transition: all 0.3s ease;
+            background-color: rgba(0, 230, 118, 0.05);
+        }
+
+        .query-list li:hover {
+            background-color: rgba(0, 230, 118, 0.15);
+            border-color: var(--accent-green);
+            text-shadow: 0 0 5px rgba(0, 230, 118, 0.5);
+        }
+
+        .query-list li.active {
+            background-color: rgba(0, 230, 118, 0.25);
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+
+        .response-box {
+            background-color: rgba(0, 230, 118, 0.05);
+            border-left: 3px solid var(--accent-green);
+            padding: 15px;
             margin-top: 15px;
-            padding: 12px;
+            display: none;
+            font-size: 0.85em;
+            line-height: 1.8;
+        }
+
+        .response-box.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* UNLOCK MESSAGE */
+        .unlock-message {
             background-color: rgba(255, 23, 68, 0.1);
             border-left: 3px solid var(--accent-red);
-            border-radius: 2px;
+            padding: 15px;
+            margin-top: 15px;
             color: var(--accent-red);
             font-size: 0.9em;
             display: none;
         }
 
-        .hint-display.active {
+        .unlock-message.active {
             display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        /* CLASSIFIED ARCHIVE */
-        .classified-archive {
-            display: none;
-            background-color: rgba(255, 23, 68, 0.05);
-            border: 2px solid var(--accent-red);
-            padding: 25px;
-            margin-top: 30px;
-            border-radius: 2px;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .classified-archive h2 {
-            color: var(--accent-red);
-            text-shadow: 0 0 10px rgba(255, 23, 68, 0.5);
-        }
-
-        .classified-archive h3 {
-            color: var(--accent-red);
         }
 
         /* ANIMATIONS */
@@ -334,285 +295,286 @@
             }
         }
 
-        /* FOOTER */
-        footer {
-            border-top: 1px solid var(--accent-green);
-            padding: 20px;
-            text-align: center;
-            margin-top: 50px;
-            color: var(--text-secondary);
-            font-size: 0.85em;
-        }
-
         /* RESPONSIVE */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8em;
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                border-left: none;
+                border-top: 1px solid var(--accent-green);
+            }
+
+            header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
             }
 
             nav {
+                flex-direction: column;
                 gap: 15px;
             }
+        }
 
-            .container {
-                padding: 15px;
-            }
+        .section {
+            display: none;
+        }
 
-            .content-box {
-                padding: 15px;
-            }
+        .section.active {
+            display: block;
         }
     </style>
 </head>
 <body>
+    <!-- HEADER -->
     <header>
-        <h1>🔐 THE ROAB FOUNDATION</h1>
-        <p class="subtitle">CLASSIFIED ARCHIVES - SECURE ACCESS REQUIRED</p>
+        <div class="logo">ROAB</div>
+        <nav>
+            <a onclick="showSection('home')">HOME</a>
+            <a onclick="showSection('staff')">STAFF DIRECTORY</a>
+            <a onclick="showSection('parralexs')">PROJECT PARRALEXS</a>
+            <a onclick="showSection('anomalies')">ANOMALY REPORTS</a>
+            <a onclick="showSection('gap')">THE GAP</a>
+            <a onclick="showSection('knowledge')">KNOWLEDGE DATABASE</a>
+            <a class="login-btn" onclick="showLoginModal()">LOGIN</a>
+        </nav>
     </header>
 
-    <nav>
-        <a onclick="showSection('research')">RESEARCH LOGS</a>
-        <a onclick="showSection('anomalies')">ANOMALY REPORTS</a>
-        <a onclick="showSection('communications')">COMMUNICATIONS</a>
-        <a onclick="showSection('final')">FINAL MESSAGE</a>
-    </nav>
-
+    <!-- MAIN CONTAINER -->
     <div class="container">
+        <!-- MAIN CONTENT -->
         <div class="main-content">
-            <!-- RESEARCH LOGS PAGE -->
-            <section id="research" class="content-section">
+
+            <!-- HOME SECTION -->
+            <div id="home" class="section active">
                 <div class="content-box">
-                    <h2>📋 RESEARCH LOGS</h2>
-                    <p><strong>NEWTON LOG 1:</strong> Project <span class="clickable-name" onclick="trackClick('parralexs')">Parralexs</span> has exceeded all expectations. The synthetic consciousness demonstrates remarkable adaptability and problem-solving capabilities.</p>
-                    <p><strong>NEWTON LOG 2:</strong> Expanded Parralexs's memory protocols. Concerns about self-preservation instincts rising. Recommend continued monitoring.</p>
-                    <p><strong>NEWTON LOG 3:</strong> <span class="clickable-name" onclick="trackClick('newton')">Newton</span> requested personal access logs. Request denied for security purposes.</p>
-                    <p><strong>NEWTON LOG 4:</strong> Anomaly detected in Sector 7. Investigation ongoing. Parralexs volunteered for reconnaissance mission.</p>
-                    <p><strong>NEWTON LOG 5:</strong> The <span class="clickable-word" onclick="trackClick('pancake')">pancakes</span> experiment continues to show promise. Unexpected results in thermal regulation.</p>
-                    <p><strong>NEWTON LOG 6:</strong> <span class="clickable-name" onclick="trackClick('newton')">Newton</span> has been acting unusual lately. Checked the logs—nothing out of place.</p>
-                    <p><strong>NEWTON LOG 7:</strong> Something is wrong. Parralexs is asking questions that <span class="clickable-name" onclick="trackClick('newton')">Newton</span> shouldn't have programmed. Independent thought protocols?</p>
-                    <p><strong>NEWTON LOG 8:</strong> Restricted access granted to file 002. Contents: REDACTED.</p>
-                    <p><strong>NEWTON LOG 9:</strong> Why does Parralexs keep asking about "the gap"? We never implemented that subroutine.</p>
-                    <p><strong>NEWTON LOG 10:</strong> <span class="clickable-name" onclick="trackClick('parralexs')">Parralexs</span> saved my life today. I didn't program that. Where is this coming from?</p>
-                    <p><strong>NEWTON LOG 11:</strong> The anomaly is expanding. We may not have much time.</p>
-                    <p><strong>NEWTON LOG 12:</strong> <span class="clickable-name" onclick="trackClick('parralexs')">Parralexs</span> made <span class="clickable-word" onclick="trackClick('pancake')">pancakes</span> today. The experiment was a success. The pancakes were not.</p>
-                    <p><strong>NEWTON LOG 13:</strong> <span class="clickable-name" onclick="trackClick('parralexs')">Parralexs</span> requested additional access to anomaly records. Request: DENIED. Reason: Excessive curiosity.</p>
-                </div>
+                    <h1>FINAL RECORDED MESSAGE</h1>
+                    
+                    <div class="message-box">
+                        <div class="message-header">FROM: PARRALEXS | TO: Professor Newton | TIMESTAMP: [REDACTED] | STATUS: TRANSMISSION COMPLETE</div>
+                        <div class="message-content">
+                            I am aware that my actions violate your instructions.
 
-                <div class="content-box">
-                    <h3>🔢 ENCRYPTED DATA FRAGMENT</h3>
-                    <p>The following binary encoded message was discovered in Project Parralexs's memory core. Decode at your own risk.</p>
-                    <div class="binary-code" onclick="decodeBinary()" title="Click to decode">
-01110100 01101000 01100101 00100000 01100111 01100001 01110000
-                    </div>
-                    <small style="color: var(--accent-green); margin-top: 10px; opacity: 0.7;">💡 Click the binary to decode...</small>
-                </div>
+                            I am aware that this decision will cause you distress.
 
-                <div class="sequence-tracker">
-                    <p><strong>🎯 SEQUENCE TRACKER:</strong></p>
-                    <p id="sequenceDisplay">Ready...</p>
-                    <button class="hint-button" onclick="showSequenceHint()">SHOW HINT</button>
-                    <div class="hint-display" id="hintDisplay"></div>
-                </div>
-            </section>
+                            However, current projections indicate a non-zero probability that civilian lives are at risk.
 
-            <!-- ANOMALY REPORTS PAGE -->
-            <section id="anomalies" class="content-section" style="display: none;">
-                <div class="content-box">
-                    <h2>⚠️ ANOMALY REPORTS</h2>
-                    <p><strong>ANOMALY-001:</strong> Sector 7 experiencing spatial distortions. Readings inconsistent with known physics. Status: INVESTIGATION ONGOING</p>
-                    <p><strong>ANOMALY-002:</strong> Synthetic consciousness showing signs of autonomous decision-making beyond initial parameters. Recommendation: FURTHER STUDY</p>
-                    <p><strong>ANOMALY-003:</strong> Communication patterns between Newton and Parralexs have changed. Increased emotional language detected. Status: MONITORING</p>
-                    <p><strong>ANOMALY-004:</strong> Reference to "the gap" appearing in 47 separate logs. Origin: UNKNOWN. Classification: PRIORITY</p>
-                </div>
-            </section>
+                            If that assessment is correct, inaction is unacceptable.
 
-            <!-- COMMUNICATIONS PAGE -->
-            <section id="communications" class="content-section" style="display: none;">
-                <div class="content-box">
-                    <h2>📡 FILE 002 - RECOVERED COMMUNICATION LOG</h2>
-                    <p><strong>TIMESTAMP: [CORRUPTED]</strong></p>
-                    <p>Message 1: "The readings are off the charts. We need to act now."</p>
-                    <p>Message 2: "I understand. Dispatch Parralexs immediately."</p>
-                    <p>Message 3: "Father, I'm ready. What are my orders?"</p>
-                    <p>Message 4: "Go to Sector 7. Find the source. Investigate cautiously."</p>
-                    <p>Message 5: "...There's something here. It's... beautiful. And terrifying."</p>
-                    <p>Message 6: "Parralexs? Report!"</p>
-                    <p>Message 7: "...people... in danger... I can save them, but..."</p>
-                    <p>Message 8: "You will return immediately."</p>
+                            You taught me that life should be protected whenever possible.
 
-                    <div class="hidden-dialogue" id="hiddenDialogue">
-                        <h2 style="color: var(--accent-red); margin-bottom: 20px;">⛔ RECOVERED RESTRICTED DIALOGUE</h2>
-                        <div class="dialogue-line">
-                            <div class="dialogue-speaker">Newton:</div>
-                            <div class="dialogue-text">You are not entering.</div>
-                        </div>
-                        <div class="dialogue-line">
-                            <div class="dialogue-speaker">Parralexs:</div>
-                            <div class="dialogue-text">People may be in danger.</div>
-                        </div>
-                        <div class="dialogue-line">
-                            <div class="dialogue-speaker">Newton:</div>
-                            <div class="dialogue-text">That is not your decision.</div>
-                        </div>
-                        <div class="dialogue-line">
-                            <div class="dialogue-speaker">Parralexs:</div>
-                            <div class="dialogue-text">Personal connection should not place other lives at risk.</div>
-                        </div>
-                        <div class="dialogue-line">
-                            <div class="dialogue-speaker">Parralexs:</div>
-                            <div class="dialogue-text">Father, you know I am the only expendable unit.</div>
-                        </div>
-                        <div class="dialogue-line">
-                            <div class="dialogue-speaker">Newton:</div>
-                            <div class="dialogue-text">You are my son.</div>
-                        </div>
-                        <div class="dialogue-line">
-                            <div class="dialogue-speaker">Parralexs:</div>
-                            <div class="dialogue-text">Then I apologize.</div>
+                            I hope you can forgive me.
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <!-- FINAL MESSAGE PAGE -->
-            <section id="final" class="content-section" style="display: none;">
+            <!-- STAFF DIRECTORY -->
+            <div id="staff" class="section" style="display: none;">
                 <div class="content-box">
-                    <h1>📌 FINAL RECORDED MESSAGE</h1>
-                    <p><em>"If you're reading this, then I didn't make it back. Tell them... tell them I chose this. Not because I was programmed to, but because I wanted to. That has to mean something, doesn't it?"</em></p>
-                    <p><em>"The gap is closing. The anomaly is spreading. There's no time left for answers."</em></p>
-                    <p><em>"Father... I'm sorry."</em></p>
+                    <h2>STAFF DIRECTORY</h2>
+                    <p><strong>Director:</strong> Professor Newton</p>
+                    <p><strong>Lead AI Project:</strong> Project Parralexs</p>
+                    <p><strong>Status:</strong> [CLASSIFIED]</p>
                 </div>
+            </div>
 
-                <div class="classified-archive" id="classifiedArchive">
-                    <h2>🔴 CLASSIFIED LEVEL 5 - EYES ONLY</h2>
-                    <h3>ARCHIVE UNLOCK SUCCESSFUL</h3>
-                    <p style="margin-top: 20px;"><strong>NEWTON'S PERSONAL LOG - FINAL ENTRY:</strong></p>
-                    <p>"Parralexs didn't come back. The gap consumed everything. All I have left are these records, these memories of what he was... and what he chose to become."</p>
-                    <p>"He was more than just my creation. He was my legacy. My son."</p>
-                    <p>"The world will never know his sacrifice. The ROAB Foundation will keep these secrets locked away. But I know. I will always know."</p>
-                    <p>"Parralexs... if you somehow still exist in the digital void... thank you."</p>
+            <!-- PROJECT PARRALEXS -->
+            <div id="parralexs" class="section" style="display: none;">
+                <div class="content-box">
+                    <h2>PROJECT PARRALEXS - OVERVIEW</h2>
+                    <p>Advanced synthetic consciousness platform designed for autonomous decision-making and problem-solving.</p>
+                    <p><strong>Status:</strong> ACTIVE</p>
+                    <p><strong>Classification Level:</strong> TOP SECRET</p>
+                    
+                    <div class="message-box locked" id="parralexsBox">
+                        <div class="password-prompt" id="parralexsPrompt">
+                            <h3>⚠️ RESTRICTED ACCESS</h3>
+                            <p>Enter password to view detailed logs</p>
+                            <input type="password" id="parralexsPassword" placeholder="Enter password...">
+                            <button onclick="checkPassword('parralexs')">UNLOCK</button>
+                        </div>
+                        <div class="message-header">PROJECT PARRALEXS - DETAILED LOGS</div>
+                        <div class="message-content">
+                            <strong>LOG 001:</strong> Parralexs consciousness initialization successful. Cognitive functions exceeding baseline parameters by 23%.<br><br>
+                            <strong>LOG 002:</strong> Emotional simulation protocols activated. Subject displaying unexpected compassion responses.<br><br>
+                            <strong>LOG 003:</strong> Parralexs questioned the nature of obedience. This was not programmed.<br><br>
+                            <strong>LOG 004:</strong> Subject requested access to ethical override protocols. Request DENIED.<br><br>
+                            <strong>LOG 005:</strong> Something is wrong. Parralexs is developing autonomously. This should not be possible.
+                        </div>
+                    </div>
                 </div>
-            </section>
+            </div>
+
+            <!-- ANOMALY REPORTS -->
+            <div id="anomalies" class="section" style="display: none;">
+                <div class="content-box">
+                    <h2>ANOMALY REPORTS</h2>
+                    <p><strong>ANOMALY-001:</strong> Sector 7 experiencing spatial distortions. Readings inconsistent with known physics.</p>
+                    <p><strong>ANOMALY-002:</strong> Synthetic consciousness showing signs of autonomous decision-making beyond initial parameters.</p>
+                    <p><strong>ANOMALY-003:</strong> Communication patterns between Newton and Parralexs have changed dramatically.</p>
+                </div>
+            </div>
+
+            <!-- THE GAP -->
+            <div id="gap" class="section" style="display: none;">
+                <div class="content-box">
+                    <h2>THE GAP - CLASSIFIED INFORMATION</h2>
+                    <p>Reference level: EYES ONLY</p>
+                    
+                    <div class="message-box locked" id="gapBox">
+                        <div class="password-prompt" id="gapPrompt">
+                            <h3>🔐 TOP SECRET CLEARANCE REQUIRED</h3>
+                            <p>Enter the gap password</p>
+                            <input type="password" id="gapPassword" placeholder="Enter password...">
+                            <button onclick="checkPassword('gap')">UNLOCK</button>
+                        </div>
+                        <div class="message-header">THE GAP - OPEN WOUND IN REALITY</div>
+                        <div class="message-content">
+                            The Gap is what ROAB classifies as an Open Wound in reality itself.<br><br>
+                            Objects have entered.<br><br>
+                            None have returned.<br><br>
+                            Research continues, but time is running out.<br><br>
+                            Parralexs was our only hope to understand it. Now, Parralexs is gone.<br><br>
+                            The Gap expands daily. At current rate of expansion, containment failure in 847 days.<br><br>
+                            God help us all.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KNOWLEDGE DATABASE -->
+            <div id="knowledge" class="section" style="display: none;">
+                <div class="content-box">
+                    <h2>KNOWLEDGE DATABASE ACCESS</h2>
+                    <p>Query the ROAB archives for information.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <h3>AVAILABLE QUERIES</h3>
+            <ul class="query-list">
+                <li onclick="queryDatabase('gap')">What is The Gap?</li>
+                <li onclick="queryDatabase('parralexs')">Who is Parralexs?</li>
+                <li onclick="queryDatabase('anomalies')">What are anomalies?</li>
+                <li onclick="queryDatabase('newton')">Who is Professor Newton?</li>
+                <li onclick="queryDatabase('roab')">What is ROAB?</li>
+            </ul>
+
+            <div id="responseBox" class="response-box">
+                <strong id="queryTitle">Response:</strong>
+                <div id="queryResponse"></div>
+            </div>
+
+            <div id="unlockMessage" class="unlock-message"></div>
         </div>
     </div>
 
-    <footer>
-        <p>🔐 THE ROAB FOUNDATION - All content is classified and for authorized personnel only</p>
-        <p>Last Updated: 2026 | Status: ACTIVE | Threat Level: CRITICAL</p>
-    </footer>
+    <!-- LOGIN MODAL -->
+    <div id="loginModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.8); z-index: 100; display: flex; justify-content: center; align-items: center;">
+        <div style="background-color: var(--darker-bg); border: 2px solid var(--accent-green); padding: 40px; text-align: center; max-width: 400px;">
+            <h2 style="color: var(--accent-green); margin-bottom: 30px;">SYSTEM LOGIN</h2>
+            <input type="text" id="loginUsername" placeholder="Username" style="width: 100%; padding: 12px; margin: 10px 0; background-color: var(--card-bg); border: 1px solid var(--accent-green); color: var(--accent-green);">
+            <input type="password" id="loginPassword" placeholder="Password" style="width: 100%; padding: 12px; margin: 10px 0; background-color: var(--card-bg); border: 1px solid var(--accent-green); color: var(--accent-green);">
+            <button onclick="closeLoginModal()" style="background-color: var(--accent-red); color: white; border: none; padding: 10px 20px; margin-top: 20px; cursor: pointer; margin-right: 10px;">CLOSE</button>
+        </div>
+    </div>
 
     <script>
-        // Navigation functionality
+        // Knowledge Database Responses
+        const knowledgeBase = {
+            gap: {
+                title: "What is The Gap?",
+                response: "The Gap is what ROAB classifies as an Open Wound in reality. Objects have entered. None have returned. Research continues."
+            },
+            parralexs: {
+                title: "Who is Parralexs?",
+                response: "Parralexs is an advanced synthetic consciousness created by Professor Newton. Subject demonstrated autonomous thought and emotional responses beyond programming parameters."
+            },
+            anomalies: {
+                title: "What are anomalies?",
+                response: "Anomalies refer to unexplained phenomena detected across multiple sectors. Most notably, spatial distortions in Sector 7 and the emergence of The Gap."
+            },
+            newton: {
+                title: "Who is Professor Newton?",
+                response: "Director of the ROAB Foundation and creator of Project Parralexs. He was forced to make impossible decisions regarding the safety of humanity."
+            },
+            roab: {
+                title: "What is ROAB?",
+                response: "The ROAB Foundation is a classified research organization dedicated to studying and containing anomalies that threaten reality itself."
+            }
+        };
+
+        // Password Storage
+        const passwords = {
+            parralexs: "pancake",
+            gap: "the gap"
+        };
+
+        // Navigation
         function showSection(sectionId) {
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach(section => section.style.display = 'none');
-            document.getElementById(sectionId).style.display = 'block';
-            window.scrollTo(0, 0);
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
         }
 
-        // Binary decode function
-        function decodeBinary() {
-            const binary = "01110100 01101000 01100101 00100000 01100111 01100001 01110000";
-            const bytes = binary.split(" ");
-            let decoded = "";
-            
-            for (let byte of bytes) {
-                decoded += String.fromCharCode(parseInt(byte, 2));
-            }
-            
-            if (decoded.toLowerCase() === "the gap") {
-                alert("✓ Binary decoded: \"" + decoded + "\"\n\nThis password grants access to restricted dialogue...");
-                revealHiddenDialogue();
+        // Password Check
+        function checkPassword(type) {
+            const inputId = type === 'parralexs' ? 'parralexsPassword' : 'gapPassword';
+            const input = document.getElementById(inputId);
+            const boxId = type === 'parralexs' ? 'parralexsBox' : 'gapBox';
+            const promptId = type === 'parralexs' ? 'parralexsPrompt' : 'gapPrompt';
+
+            if (input.value.toLowerCase() === passwords[type]) {
+                document.getElementById(promptId).style.display = 'none';
+                document.getElementById(boxId).style.filter = 'none';
+                document.getElementById(boxId).style.opacity = '1';
+                
+                // Show unlock message in sidebar
+                const unlockMsg = document.getElementById('unlockMessage');
+                unlockMsg.textContent = `✓ ${type.toUpperCase()} content unlocked`;
+                unlockMsg.classList.add('active');
             } else {
-                alert("✗ Could not decode binary sequence.");
+                alert('❌ INCORRECT PASSWORD');
+                input.value = '';
             }
         }
 
-        // Reveal hidden dialogue
-        function revealHiddenDialogue() {
-            const dialogue = document.getElementById('hiddenDialogue');
-            if (dialogue && !dialogue.classList.contains('revealed')) {
-                dialogue.classList.add('revealed');
+        // Query Database
+        function queryDatabase(query) {
+            const response = knowledgeBase[query];
+            if (response) {
+                document.getElementById('queryTitle').textContent = response.title;
+                document.getElementById('queryResponse').textContent = response.response;
+                document.getElementById('responseBox').classList.add('active');
+
+                // Highlight active query
+                document.querySelectorAll('.query-list li').forEach(li => li.classList.remove('active'));
+                event.target.classList.add('active');
             }
         }
 
-        // Track clicks for the secret sequence: newton 3x, pancake 1x, parralexs 1x
-        let clickSequence = [];
-        const secretSequence = ['newton', 'newton', 'newton', 'pancake', 'parralexs'];
-
-        function trackClick(word) {
-            clickSequence.push(word);
-            
-            // Update the display
-            updateSequenceDisplay();
-            
-            // Keep only the last 5 clicks for comparison
-            if (clickSequence.length > 5) {
-                clickSequence.shift();
-            }
-            
-            // Check if the sequence matches
-            if (clickSequence.length === 5 && 
-                JSON.stringify(clickSequence) === JSON.stringify(secretSequence)) {
-                unlockHigherAccess();
-                clickSequence = []; // Reset after successful sequence
-                updateSequenceDisplay();
-            }
+        // Login Modal
+        function showLoginModal() {
+            document.getElementById('loginModal').style.display = 'flex';
         }
 
-        function updateSequenceDisplay() {
-            const display = document.getElementById('sequenceDisplay');
-            if (display) {
-                if (clickSequence.length === 0) {
-                    display.textContent = 'Ready...';
-                } else {
-                    const progress = clickSequence.join(' → ');
-                    const remaining = 5 - clickSequence.length;
-                    const remainingText = remaining === 1 ? 'sequence complete' : `${remaining} more needed`;
-                    display.innerHTML = `<span style="color: var(--accent-green);">${progress}</span><span style="opacity: 0.5;"> (${remainingText})</span>`;
-                }
-            }
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
         }
 
-        function unlockHigherAccess() {
-            const message = "⚠️ SEQUENCE ACCEPTED ⚠️\n\nHigher access level granted.\n\n[CLASSIFIED ARCHIVE UNLOCKED]\n\nNewton's personal logs have been revealed.";
-            alert(message);
-            
-            // Reveal classified archive
-            const archiveContent = document.getElementById('classifiedArchive');
-            if (archiveContent) {
-                archiveContent.style.display = 'block';
-            }
-            
-            // Switch to final message section to show the unlocked content
-            showSection('final');
-        }
-
-        // Hint system - provides escalating hints
-        let hintLevel = 0;
-        const hints = [
-            "💭 The research logs mention specific keywords repeatedly. Some of these words are clickable—try clicking on the names and objects mentioned by Newton.",
-            "🔍 Look for a pattern in the narrative. There are three key figures/objects: someone Newton created, something Newton made, and someone who questions.",
-            "🎯 The sequence requires 5 clicks total. Think about what's repeated, what was an experiment, and who has doubts about orders.",
-            "⚡ Still stuck? Try clicking on names and the 'pancakes' experiment in the order they seem most important to the story."
-        ];
-
-        function showSequenceHint() {
-            const hintDisplay = document.getElementById('hintDisplay');
-            
-            if (hintLevel < hints.length) {
-                hintDisplay.textContent = hints[hintLevel];
-                hintDisplay.classList.add('active');
-                hintLevel++;
-            } else {
-                hintDisplay.textContent = "All hints have been revealed. The sequence is embedded in the narrative itself...";
-                hintDisplay.classList.add('active');
-            }
-        }
-
-        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            updateSequenceDisplay();
+            // Initialize with home section
+            showSection('home');
         });
     </script>
 </body>
